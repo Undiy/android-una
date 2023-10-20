@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -28,6 +29,7 @@ import com.example.una.ui.theme.UnaTheme
 @Composable
 fun SiteList(
     sites: List<UnaSite>,
+    onSiteClick: (UnaSite) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
@@ -35,19 +37,25 @@ fun SiteList(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
-        items(sites) {
-            SiteListItem(site = it)
+        items(sites) { site ->
+            SiteListItem(
+                site = site,
+                onClick = { onSiteClick(site) }
+            )
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SiteListItem(
     site: UnaSite,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
    Card(
-       modifier = modifier
+       modifier = modifier,
+       onClick = onClick
    ) {
        Row(
             modifier = Modifier
@@ -75,7 +83,10 @@ fun SiteListItem(
 @Composable
 fun SiteListItemPreview() {
     UnaTheme {
-        SiteListItem(site = UnaDatasource.sites.first())
+        SiteListItem(
+            site = UnaDatasource.sites.first(),
+            onClick = {}
+        )
     }
 }
 
@@ -83,6 +94,9 @@ fun SiteListItemPreview() {
 @Composable
 fun SiteListPreview() {
     UnaTheme {
-        SiteList(sites = UnaDatasource.sites)
+        SiteList(
+            sites = UnaDatasource.sites,
+            onSiteClick = {}
+        )
     }
 }

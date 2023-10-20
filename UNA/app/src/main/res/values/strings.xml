@@ -2,6 +2,8 @@
     <string name="app_name">UNA</string>
     <string name="app_title">Urals Natural Attractions</string>
 
+    <string name="back_button">Back</string>
+
     <string name="chertovo_gorodishche_title">Chertovo Gorodishche</string>
     <string name="chertovo_gorodishche_info">Chertovo Gorodishche, more commonly known as Devil\'s Settlement, Devil\'s Mound, or Devil\'s City, is a rock formation near Yekaterinburg in Sverdlovsk Oblast, Ural Federal District, Russia. Made from several types of rock, the formation is a tourist attraction and archaeological site.</string>
 
@@ -28,8 +30,10 @@
 
     <string name="orda_cave_title">Orda Cave</string>
     <string name="orda_cave_info">Orda Cave (Ординская, Ordinskaya) is a gypsum crystal cave found underneath the western Ural Mountains. The mouth is near the shore of the Kungur River just outside Orda, Perm Krai in Russia. The cave system stretches over 5.1 kilometres (3.2 mi) with around 4.8 kilometres (3.0 mi) over the overall length being under water. This makes it one of the longest underwater caves and the largest underwater gypsum cave in the world. It contains the longest siphon in the former Soviet Union (935 meters). The mineral-rich area surrounding the cave filters the water and makes it very clear. Divers have a visibility of over 50 yards (46 m) making it an ideal location for photographic expeditions. Victor Lyagushkin, a journalist and underwater photographer, led around 150 expeditions into the caves over a six-month period in 2011. The photographs taken by his team were published in the Orda Cave Awareness Project alongside stories from other divers who had visited the cave system. The diving team were also the first people to produce a spherical panorama of an underwater cave. A local myth tells of the "Lady of the Orda Cave" who is said to live in the caves. The cave has also been visited during dives by Martyn Farr, Lamar Hires, Pascal Bernabé, and Reggie Ross.</string>
+
     <string name="mountains_rocks"><![CDATA[Mountains & Rocks]]></string>
     <string name="water_sites">Water Sites</string>
     <string name="caves">Caves</string>
     <string name="all">All</string>
+    <string name="pick_a_site_to_view_details">Pick a site to view details</string>
 </resources>
