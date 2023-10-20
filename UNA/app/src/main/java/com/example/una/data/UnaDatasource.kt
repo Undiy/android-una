@@ -38,7 +38,7 @@ object UnaDatasource {
             title = R.string.lake_itkul_title,
             info = R.string.lake_itkul_info,
             image = R.drawable.lake_itkul,
-            geoUri = Uri.parse("geo:56.09,60.3"),
+            geoUri = Uri.parse("geo:56.15,60.5119"),
             category = UnaCategory.WaterSites
         ),
         UnaSite(
