@@ -1,5 +1,7 @@
 package com.example.una.ui
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,9 +14,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -29,6 +36,7 @@ import com.example.una.ui.theme.UnaTheme
 @Composable
 fun SiteList(
     sites: List<UnaSite>,
+    selectedSite : UnaSite?,
     onSiteClick: (UnaSite) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -40,6 +48,7 @@ fun SiteList(
         items(sites) { site ->
             SiteListItem(
                 site = site,
+                isSelected = selectedSite?.equals(site) ?: false,
                 onClick = { onSiteClick(site) }
             )
         }
@@ -50,12 +59,25 @@ fun SiteList(
 @Composable
 fun SiteListItem(
     site: UnaSite,
+    isSelected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val color by animateColorAsState(
+        targetValue = if (isSelected) {
+            MaterialTheme.colorScheme.primaryContainer
+        } else {
+            MaterialTheme.colorScheme.secondaryContainer
+        },
+        label = "selected_color"
+    )
+
    Card(
        modifier = modifier,
-       onClick = onClick
+       onClick = onClick,
+       colors = CardDefaults.cardColors(
+            containerColor = color
+       )
    ) {
        Row(
             modifier = Modifier
@@ -85,6 +107,7 @@ fun SiteListItemPreview() {
     UnaTheme {
         SiteListItem(
             site = UnaDatasource.sites.first(),
+            isSelected = false,
             onClick = {}
         )
     }
@@ -96,6 +119,7 @@ fun SiteListPreview() {
     UnaTheme {
         SiteList(
             sites = UnaDatasource.sites,
+            selectedSite = UnaDatasource.sites[1],
             onSiteClick = {}
         )
     }

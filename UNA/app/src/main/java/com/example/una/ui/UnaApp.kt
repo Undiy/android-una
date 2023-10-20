@@ -76,8 +76,7 @@ fun UnaAppBar(
     TopAppBar(
         title = {
             Text(
-                text = stringResource(id = R.string.app_title),
-                color = MaterialTheme.colorScheme.onPrimaryContainer
+                text = stringResource(id = R.string.app_title)
             )
         },
         navigationIcon = if (showNavigationIcon) {
@@ -93,7 +92,9 @@ fun UnaAppBar(
             { Box {} }
         },
         colors = TopAppBarDefaults.mediumTopAppBarColors (
-            containerColor = MaterialTheme.colorScheme.primaryContainer
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
         ),
         modifier = modifier,
     )
@@ -108,14 +109,15 @@ fun UnaCompactScreen(
     if (uiState.currentSelectedSite == null) {
         SiteList(
             sites = uiState.sites,
+            selectedSite = null,
             onSiteClick = viewModel::updateSelectedSite,
-            modifier
+            modifier = modifier
         )
     } else {
         SiteDetails(
             site = uiState.currentSelectedSite,
             onBack = viewModel::resetSelectedSite,
-            modifier
+            modifier = modifier
         )
     }
 }
@@ -131,6 +133,7 @@ fun UnaExpandedScreen(
     ) {
         SiteList(
             sites = uiState.sites,
+            selectedSite = uiState.currentSelectedSite,
             onSiteClick = viewModel::updateSelectedSite,
             modifier = Modifier.weight(2f)
         )
